@@ -61,9 +61,9 @@
         Content
       </label>
       <div class="col-md-10">
-    
-    <textarea class="form-control" name="content" rows="14"
-                  id="content">{{ $content }}</textarea> 
+    <textarea class="form-control ckeditor" name="content" rows="14"
+                  id="editor">{{ $content }}</textarea>
+     
       </div>
     </div>
   </div>
@@ -133,3 +133,7 @@
 
   </div>
 </div>
+@section('scripts')
+<script type="text/javascript" src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+ 
+@stop

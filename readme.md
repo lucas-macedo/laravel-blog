@@ -4,16 +4,15 @@ Bootstrap blog is a sample application for beginning development with Laravel 5.
 
 ## Features
 
-* Bootstrap Blog 3.x
+* Bootstrap Blog 3.x clean blog
 * Custom Error Pages
 	* 403 for forbidden page accesses
 	* 404 for not found pages
 	* 500 for internal server errors
-* Confide for Authentication and Authorization
 * Back-end
 	* Upload and Image management
 	* Manage blog posts and Tag
-	* 
+	* ckeditor and management layout
 * Front-end
 	* User login
 	* User account area
@@ -23,25 +22,28 @@ Bootstrap blog is a sample application for beginning development with Laravel 5.
 	
 	
 * Packages included:
-	* [HTMLmin](https://github.com/GrahamCampbell/Laravel-HTMLMin)
-	* [php-rss-writer](https://github.com/zizaco/entrust)
-	* [guzzle](https://github.com/laravelbook/ardent)
+	* [HTMLmin](https://github.com/GrahamCampbell/Laravel-HTMLMin "HTML Minify")
+	* [php-rss-writer](https://github.com/suin/php-rss-writer "php rss writer")
+	* [guzzle](https://github.com/guzzle/guzzle)
+	* [Ckeditor](http://ckeditor.com "Ckeditor")
 	
 
 ## Issues
 See [github issue list](https://github.com/turahe/blog/issues) for current list.
 
-## Recommendations
-I recommend that you use Grunt to compile and minify your assets. See this [article](http://blog.elenakolevska.com/using-grunt-with-laravel-and-bootstrap) for details.
-
-Also I recommend using [Former](http://anahkiasen.github.io/former/) for your forms. It's an excellent library.
-
 -----
 
 ##Requirements
 
-	PHP >= 5.4.0
-	MCrypt PHP Extension
+	
+
+    PHP >= 5.5.9
+    OpenSSL PHP Extension
+    PDO PHP Extension
+    Mbstring PHP Extension
+    Tokenizer PHP Extension
+
+
 
 Installation instructions for the mcrypt extension are available [here](http://php.net/manual/en/mcrypt.installation.php).
 
@@ -49,34 +51,34 @@ Installation instructions for the mcrypt extension are available [here](http://p
 ### Step 1: Get the code
 #### Option 1: Git Clone
 
-```bash
-$ git clone git://github.com/turahe/blog.git laravel
-```
+
+	$ git clone git://github.com/turahe/blog.git laravel
 
 #### Option 2: Download the repository
 
     https://github.com/turahe/blog/archive/master.zip
 	
 ### Option 3: Download with Composer
-		composer require turahe/metro
+		composer require turahe/blog
+
 
 ### Step 2: Use Composer to install dependencies
 #### Option 1: Composer is not installed globally
 
-```bash
-$ cd laravel
-$ curl -s https://getcomposer.org/installer | php
-$ php composer.phar install
-```
+
+	$ cd laravel
+	$ curl -s https://getcomposer.org/installer | php
+	$ php composer.phar install
+
 
 #### Option 2: Composer is installed globally
 
-```bash
-$ cd laravel
-$ composer install
-```
 
-If you haven't already, you might want to make [composer be installed globally](http://andrewelkins.com/programming/php/setting-up-composer-globally-for-laravel-4/) for future ease of use.
+	$ cd laravel
+	$ composer install
+
+
+
 
 Some packages used to preprocess and minify assests are required on the development environment.
 
@@ -86,199 +88,112 @@ This will skip the development packages and ensure the version of the packages i
 
 NEVER run `php composer.phar update` on your production server.
 
-### Step 3: Configure Environments
 
-Open ***bootstrap/start.php*** and edit the following lines to match your settings. You want to be using your machine name in Windows and your hostname in OS X and Linux (type `hostname` in terminal). Using the machine name will allow the `php artisan` command to use the right configuration files as well.
+### Step 3: Install dependencies Laravel
+####1. install packages from npm
+	`npm install`
+    
+for install packages npm and laravel-elixir
+####2. Install library via bower
 
-```php
-$env = $app->detectEnvironment(array(
+    `bower install`
+this step will downloads jquery, bootstap font awesome and other
+####3. Configure library
+    `gulp coyfiles`
+then
+    `gulp`
+or
+	`gulp --production`
+for install library on compressed
 
-    'local' => array('your-local-machine-name'),
-    'staging' => array('your-staging-machine-name'),
-    'production' => array('your-production-machine-name'),
-));
-```
-
-Now create the folder inside ***app/config*** that corresponds to the environment the code is deployed in. This will most likely be ***local*** when you first start a project.
-
-You will now be copying the initial configuration file inside this folder before editing it. Let's start with ***app/config/app.php***. So ***app/config/local/app.php*** will probably look something like this, as the rest of the configuration can be left to their defaults from the initial config file:
-
-```php
-<?php
-
-return array(
-
-    'url' => 'http://myproject.local',
-
-    'timezone' => 'UTC',
-
-    'key' => 'YourSecretKey!!!',
-
-    'providers' => append_config( array(
-
-        /* Uncomment for use in development */
-        //'Way\Generators\GeneratorsServiceProvider', // Generators
-        //'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', // IDE Helpers
-
-        )
-    ),
-
-);
-```
 
 ### Step 4: Configure Database
 
-Now that you have the environment configured, you need to create a database configuration for it. Copy the file ***app/config/database.php*** in ***app/config/local*** and edit it to match your local database settings. You can remove all the parts that you have not changed as this configuration file will be loaded over the initial one.
+Now that you have the environment configured, you need to create a database configuration for it. Edit the file ***config/database.php*** to match your local database settings. You can remove all the parts that you have not changed as this configuration file will be loaded over the initial one.
 
-### Step 5: Configure Mailer
 
-In the same fashion, copy the ***app/config/mail.php*** configuration file in ***app/config/local/mail.php***. Now set the `address` and `name` from the `from` array in ***config/mail.php***. Those will be used to send account confirmation and password reset emails to the users.
-If you don't set that registration will fail because it cannot send the confirmation email.
 
-### Step 6: Populate Database
+
+### Step 5: Populate Database
 Run these commands to create and populate Users table:
 
-```bash
-$ php artisan migrate
-$ php artisan db:seed
-```
 
-### Step 7: Set Encryption Key
-***In app/config/app.php***
+	`$ php artisan migrate
+	$ php artisan db:seed`
 
-```
-/*
-|--------------------------------------------------------------------------
-| Encryption Key
-|--------------------------------------------------------------------------
-|
-| This key is used by the Illuminate encrypter service and should be set
-| to a random, long string, otherwise these encrypted values will not
-| be safe. Make sure to change it before deploying any application!
-|
-*/
-```
 
-```php
-'key' => 'YourSecretKey!!!',
-```
+### Step 6: Set Encryption Key
+***In .env***
 
-You can use artisan to do this
+copy file .env.example to .env
 
-```bash
-$ php artisan key:generate --env=local
-```
+    `copy .env.example .env` 
 
-The `--env` option allows defining which environment you would like to apply the key generation. In our case, artisan generates your key in ***app/config/local/app.php*** and leaves ***'YourSecretKey!!!'*** in ***app/config/app.php***. Now it can be generated again when you move the project to another environment.
+for windows users or 
 
-### Step 8: Make sure app/storage is writable by your web server.
+    cp env.example env
+for linux user and OS X
+
+so then generate Encyption key
+
+
+    $ php artisan key:generate 
+
+
+
+### Step 7: Make sure app/storage is writable by your web server.
 
 If permissions are set correctly:
 
-```bash
-$ chmod -R 775 app/storage
-```
+
+	$ chmod -R 775 app/storage
+
 
 Should work, if not try
 
-```bash
-$ chmod -R 777 app/storage
-```
+	$ chmod -R 777 app/storage
 
-### Step 9: Start Page (Three options for proceeding)
 
-### User login with commenting permission
-Navigate to your Laravel 4 website and login at /user/login:
+### Step 8: Set user
 
-    username : user
-    password : user
+Creating new user for administrator
 
-## Create a new user
-Create a new user at /user/create
+    php artisan tinker
+    Psy Shell v0.4.3 (PHP 5.6.7-1+deb.sury.org~utopic+1 — cli) by Justin Hileman
+	>>> $user = new App\User;
+	=> <App\User #000000007543b78f0000000009f4a1ca> {}
+	>>> $user->name = 'Your Name';
+	=> "Your Name"
+	>>> $user->email = 'YOUR@email.com';
+	=> "YOUR@email.com"
+	>>> $user->password = bcrypt('YOUR PASSWORD');
+	=> "$2y$10$gBF9EIr9IrIbMX7dwQsCTO6IsBC0/c0P6qzZ01zwPhoW61MMwOVgC"
+	>>> $user->save();
+	=> true
+	>>> exit;
 
-### Admin login
-Navigate to /admin
+### Step 9: Configure Mailer
 
-    username: admin
-    password: admin
+First, edit config/mail.php as instructed below.
+Changes to config/mail.php
 
------
-## Application Structure
+	// Find the following line
+ 	 'from' => ['address' => null, 'name' => null],
+	// Change it to
+ 	 'from' => ['address' => env('MAIL_FROM'), 'name' => env('MAIL_NAME')],
 
-The structure of this starter site is the same as default Laravel 4 with one exception.
-This starter site adds a `library` folder. Which, houses application specific library files.
-The files within library could also be handled within a composer package, but is included here as an example.
+Next, edit .env, changing the mail configuration to what’s below (replacing USERNAME, PASSWORD, FROM, etc. your own settings).
+Gmail Configuration in .env
 
-## Detect Language
+	MAIL_DRIVER=smtp
+	MAIL_HOST=smtp.gmail.com
+	MAIL_PORT=587
+	MAIL_USERNAME=YOUR@EMAIL.COM
+	MAIL_PASSWORD=YOUR-GMAIL-PASSWORD
+	MAIL_FROM=YOUR@EMAIL.COM
+	MAIL_NAME=YOUR-NAME
 
-If you want to detect the language on all pages you'll want to add the following to your routes.php at the top.
-
-```php
-Route::when('*','detectLang');
-```
-
-### Development
-
-For ease of development you'll want to enable a couple useful packages. This requires editing the `app/config/app.php` file.
-
-```php
-'providers' => array(
-    [...]
-    /* Uncomment for use in development */
-//  'Way\Generators\GeneratorsServiceProvider', // Generators
-//  'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', // IDE Helpers
-),
-```
-Uncomment the Generators and IDE Helpers. Then you'll want to run a composer update with the dev flag.
-
-```bash
-$ php composer.phar update
-```
-This adds the generators and ide helpers.
-To make it build the ide helpers automatically you'll want to modify the post-update-cmd in `composer.json`
-
-```json
-"post-update-cmd": [
-	"php artisan ide-helper:generate",
-	"php artisan optimize"
-]
-```
-
-### Production Launch
-
-By default debugging is enabled. Before you go to production you should disable debugging in `app/config/app.php`
-
-```
-    /*
-    |--------------------------------------------------------------------------
-    | Application Debug Mode
-    |--------------------------------------------------------------------------
-    |
-    | When your application is in debug mode, detailed error messages with
-    | stack traces will be shown on every error that occurs within your
-    | application. If disabled, a simple generic error page is shown.
-    |
-    */
-
-    'debug' => false,
-```
-
-## Troubleshooting
-
-## Composer asking for login / password
-
-Try using this with doing the install instead.
-
-```bash
-$ composer install --dev --prefer-source --no-interaction
-```
-
-## License
-
-This is free software distributed under the terms of the MIT license
-
-## Additional information
-
-Inspired by and based on [laravel4-starter-kit](https://github.com/brunogaspar/laravel4-starter-kit)
-
+### Step 10: Setting commnent
+going to disqus and create acount to create comment adminstrations and copy file javascript, copy to `resource/view/blog/partials/disqus.blade.php` 
+##Contact Me
 Any questions, feel free to [contact me](http://facebook.com/nur.wachid).

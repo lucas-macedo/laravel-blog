@@ -7,8 +7,7 @@
 
   <title>{{ config('blog.title') }} Admin</title>
 
-  <link href="{{URL::asset('/assets/css/admin.css')}}" rel="stylesheet">
-
+  <link href="{{ asset('assets/css/admin.css') }}" rel="stylesheet">
   @yield('styles')
 
   <!--[if lt IE 9]>
@@ -28,7 +27,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">{{ config('blog.title') }} Admin</a>
+      <a class="navbar-brand" href="#"><i class="fa fa-dashboard"></i> {{ config('blog.title') }} Admin</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-menu">
       @include('admin.partials.navbar')
@@ -38,8 +37,7 @@
 
 @yield('content')
 
-<script src="{{URL::asset('/assets/js/admin.js')}}"></script>
-<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('assets/js/admin.js') }}"></script>
 
 @yield('scripts')
 

@@ -1,6 +1,5 @@
-
-
-Bootstrap blog is a sample application for beginning development with Laravel 5.1
+# Blog-Laravel
+A simple, clean and beautiful blogging application written in Laravel 5.1.
 
 ## Features
 
@@ -24,12 +23,12 @@ Bootstrap blog is a sample application for beginning development with Laravel 5.
 * Packages included:
 	* [HTMLmin](https://github.com/GrahamCampbell/Laravel-HTMLMin "HTML Minify")
 	* [php-rss-writer](https://github.com/suin/php-rss-writer "php rss writer")
-	* [guzzle](https://github.com/guzzle/guzzle)
+	* [guzzle](https://github.com/guzzle/guzzle "guzzle")
 	* [Ckeditor](http://ckeditor.com "Ckeditor")
 	
 
 ## Issues
-See [github issue list](https://github.com/turahe/blog/issues) for current list.
+See [github issue list](https://github.com/turahe/blog/issues "Issues") for current list.
 
 -----
 
@@ -82,11 +81,11 @@ Installation instructions for the mcrypt extension are available [here](http://p
 
 Some packages used to preprocess and minify assests are required on the development environment.
 
-When you deploy your project on a production environment you will want to upload the ***composer.lock*** file used on the development environment and only run `php composer.phar install` on the production server.
+When you deploy your project on a production environment you will want to upload the ***composer.lock*** file used on the development environment and only run `php composer install` on the production server.
 
 This will skip the development packages and ensure the version of the packages installed on the production server match those you developped on.
 
-NEVER run `php composer.phar update` on your production server.
+NEVER run `php composer update` on your production server.
 
 
 ### Step 3: Install dependencies Laravel
@@ -161,7 +160,7 @@ Creating new user for administrator
     php artisan tinker
     Psy Shell v0.4.3 (PHP 5.6.7-1+deb.sury.org~utopic+1 — cli) by Justin Hileman
 	>>> $user = new App\User;
-	=> <App\User #000000007543b78f0000000009f4a1ca> {}
+	=> <App\User {#690}
 	>>> $user->name = 'Your Name';
 	=> "Your Name"
 	>>> $user->email = 'YOUR@email.com';
@@ -196,4 +195,4 @@ Gmail Configuration in .env
 ### Step 10: Setting commnent
 going to disqus and create acount to create comment adminstrations and copy file javascript, copy to `resource/view/blog/partials/disqus.blade.php` 
 ##Contact Me
-Any questions, feel free to [contact me](http://facebook.com/nur.wachid).
+Any questions, feel free to [contact me](http://facebook.com/nur.wachid "Nur Wachid").

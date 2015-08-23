@@ -5,13 +5,13 @@ use Illuminate\Database\Seeder;
 
 class TagTableSeeder extends Seeder
 {
-  /**
-   * Seed the tags table
-   */
-  public function run()
-  {
-    Tag::truncate();
+    /**
+     * Seed the tags table
+     */
+    public function run()
+    {
+        Tag::truncate();
 
-    factory(Tag::class, 5)->create();
-  }
+        factory(Tag::class, 5)->create();
+    }
 }

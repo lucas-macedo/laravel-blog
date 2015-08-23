@@ -7,7 +7,7 @@
         <h3>Posts <small>&raquo; Listing</small></h3>
       </div>
       <div class="col-md-6 text-right">
-        <a href="{{URL::to('/admin/post/create')}}" class="btn btn-success btn-md">
+        <a href="/admin/post/create" class="btn btn-success btn-md">
           <i class="fa fa-plus-circle"></i> New Post
         </a>
       </div>
@@ -37,7 +37,7 @@
               <td>{{ $post->title }}</td>
               <td>{{ $post->subtitle }}</td>
               <td>
-                <a href="{{URL::to('/admin/post')}}/{{ $post->id }}/edit"
+                <a href="/admin/post/{{ $post->id }}/edit"
                    class="btn btn-xs btn-info">
                   <i class="fa fa-edit"></i> Edit
                 </a>

@@ -6,8 +6,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/pickadate/themes/default.time.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/selectize/css/selectize.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/selectize/css/selectize.bootstrap3.css') }}">
-
-
   
 @stop
 
@@ -57,13 +55,11 @@
 @stop
 
 @section('scripts')
-
-<script type="text/javascript" src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/pickadate/picker.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/pickadate/picker.date.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/pickadate/picker.time.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/selectize/selectize.min.js') }}"></script>
- 
+<script type="text/javascript" src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
   <script>
     $(function() {
       $("#publish_date").pickadate({
@@ -75,10 +71,6 @@
       $("#tags").selectize({
         create: true
       });
-      $('#content').wysihtml5();
     });
   </script>
- 
-
-
 @stop

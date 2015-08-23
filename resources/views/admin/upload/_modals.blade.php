@@ -2,7 +2,7 @@
 <div class="modal fade" id="modal-folder-create">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form method="POST" action="/admin/upload/folder"
+      <form method="POST" action="{{ asset('admin/upload/folder') }}"
             class="form-horizontal">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="folder" value="{{ $folder }}">
@@ -55,7 +55,7 @@
         </p>
       </div>
       <div class="modal-footer">
-        <form method="POST" action="/admin/upload/file">
+        <form method="POST" action="{{ asset('admin/upload/file') }}">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <input type="hidden" name="_method" value="DELETE">
           <input type="hidden" name="folder" value="{{ $folder }}">
@@ -108,7 +108,7 @@
   </div>
 </div>
 
-{{-- Upload File Modal --}}
+<!-- Upload File Modal -->
 <div class="modal fade" id="modal-file-upload">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -154,7 +154,7 @@
   </div>
 </div>
 
-{{-- View Image Modal --}}
+<!-- View Image Modal -->
 <div class="modal fade" id="modal-image-view">
   <div class="modal-dialog">
     <div class="modal-content">

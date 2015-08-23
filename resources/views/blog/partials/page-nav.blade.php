@@ -10,19 +10,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{URL::to("/")}}">{{ config('blog.name') }}</a>
+      <a class="navbar-brand" href="/">{{ config('blog.name') }}</a>
     </div>
 
     {{-- Collect the nav links, forms, and other content for toggling --}}
     <div class="collapse navbar-collapse" id="navbar-main">
       <ul class="nav navbar-nav">
         <li>
-          <a href="{{URL::to("blog")}}">Blog</a>
+          <a href="/">Home</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="{{URL::to("/contact")}}">Contact</a>
+          <a href="/contact">Contact</a>
         </li>
       </ul>
     </div>

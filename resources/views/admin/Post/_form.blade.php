@@ -133,7 +133,3 @@
 
   </div>
 </div>
-@section('scripts')
-<script type="text/javascript" src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
- 
-@stop

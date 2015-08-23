@@ -1,4 +1,9 @@
-
+<hr>
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    @include('blog.partials.disqus')
+  </div>
+</div>
 <hr>
 <footer>
   <div class="container">
@@ -15,8 +20,8 @@
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/macapat" data-toggle="tooltip"
-               title="Macapat">
+            <a href="https://twitter.com/PERSONALIZE" data-toggle="tooltip"
+               title="My Twitter Page">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -24,8 +29,8 @@
             </a>
           </li>
           <li>
-            <a href="https://www.facebook.com/nur.wachid" data-toggle="tooltip"
-               title="Nur Wachid">
+            <a href="https://www.facebook.com/PERSONALIZE" data-toggle="tooltip"
+               title="My Facebook Page">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -33,15 +38,15 @@
             </a>
           </li>
           <li>
-            <a href="https://www.google.com/+pucung" data-toggle="tooltip"
-               title="Google +Pucung">
+            <a href="https://www.google.com/+PERSONALIZE" data-toggle="tooltip"
+               title="My Google+ Page">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
               </span>
             </a>
           </li>
-        <!--  <li>
+          <li>
             <a href="http://www.linkedin.com/in/PERSONALIZE/" data-toggle="tooltip"
                title="My LinkedIn Page">
               <span class="fa-stack fa-lg">
@@ -49,10 +54,10 @@
                 <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
               </span>
             </a>
-          </li> -->
+          </li>
           <li>
-            <a href="https://github.com/turahe" data-toggle="tooltip"
-               title="Turahe">
+            <a href="https://github.com/PERSONALIZE" data-toggle="tooltip"
+               title="My GitHub Pages">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -60,7 +65,7 @@
             </a>
           </li>
         </ul>
-        <p class="copyright">Copyright &copy; {{ config('blog.author') }} {{date("Y")}} </p>
+        <p class="copyright">Copyright &copy; {{ config('blog.author') }}</p>
       </div>
     </div>
   </div>

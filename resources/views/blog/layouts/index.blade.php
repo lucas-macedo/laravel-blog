@@ -1,9 +1,11 @@
 @extends('blog.layouts.master')
 
 @section('page-header')
+
   <header class="intro-header"
-          style="background-image: url('{{ page_image($page_image) }}')">
+          style="background-image: url('{{url('uploads/'.$page_image)}}')">
     <div class="container">
+    
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           <div class="site-heading">
